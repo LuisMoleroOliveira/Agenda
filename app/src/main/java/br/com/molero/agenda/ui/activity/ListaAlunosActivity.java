@@ -22,6 +22,7 @@ import br.com.molero.agenda.model.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
+    public static final String CHAVE_ALUNO = "aluno";
     private final AlunoDAO dao = new AlunoDAO();
     private ArrayAdapter<Aluno> adapter;
 
@@ -65,10 +66,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
     private void configuraListenerDeCliquePorItem(ListView listaDeAlunos) {
         listaDeAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-                Aluno aluno = (Aluno) adapterView.getItemAtPosition(posicao);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Aluno aluno = (Aluno) adapterView.getItemAtPosition(position);
                 Intent vaiParaFormularioActivity = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
-                vaiParaFormularioActivity.putExtra("aluno", aluno);
+                vaiParaFormularioActivity.putExtra(CHAVE_ALUNO, aluno);
                 startActivity(vaiParaFormularioActivity);
             }
         });
