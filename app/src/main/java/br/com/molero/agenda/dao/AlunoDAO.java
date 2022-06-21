@@ -30,6 +30,13 @@ public class AlunoDAO {
             alunos.set(posicaoDoAluno, aluno);
         }
     }
+    public void remove(Aluno aluno){
+        Aluno alunoEncontrado = buscaAlunoPeloId(aluno);
+        if (alunoEncontrado != null) {
+            int posicaoDoAluno = alunos.indexOf(alunoEncontrado);
+            alunos.remove(posicaoDoAluno);
+        }
+    }
 
     @Nullable
     private Aluno buscaAlunoPeloId(Aluno aluno) {
