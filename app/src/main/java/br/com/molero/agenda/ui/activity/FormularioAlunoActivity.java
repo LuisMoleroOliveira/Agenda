@@ -48,7 +48,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         if(itemId == R.id.activity_formulario_aluno_menu_salvar){
-           ;
+
             finalizaFormulario();
         }
         return super.onOptionsItemSelected(item);

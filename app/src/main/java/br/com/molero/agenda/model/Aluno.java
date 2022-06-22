@@ -36,7 +36,7 @@ public class Aluno implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return "Nome: " + nome + "\nTelefone: " + telefone + "\nE-mail: " + email;
+        return  nome+" - "+telefone;
 
     }
 
