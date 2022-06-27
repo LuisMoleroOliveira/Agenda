@@ -15,7 +15,7 @@ import br.com.molero.agenda.model.Aluno;
 
 public class ListaAlunosAdapter extends BaseAdapter {
     private final List<Aluno> alunos = new ArrayList<>();
-    private Context context;
+    private final Context context;
 
     public ListaAlunosAdapter(Context context) {
         this.context = context;
@@ -39,9 +39,7 @@ public class ListaAlunosAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup view) {
-        View viewCriada = LayoutInflater
-                .from(context)
-                .inflate(R.layout.item_aluno, view,false);
+        View viewCriada = getViewCriada(view);
 
         Aluno alunoDevolvido = alunos.get(position);
 
@@ -54,15 +52,20 @@ public class ListaAlunosAdapter extends BaseAdapter {
         return viewCriada;
     }
 
-    public void clear() {
-        alunos.clear();
-    }
-
-    public void addAll(List<Aluno> alunos) {
-        this.alunos.addAll(alunos);
+    private View getViewCriada(ViewGroup view) {
+        return LayoutInflater
+                .from(context)
+                .inflate(R.layout.item_aluno, view,false);
     }
 
     public void remove(Aluno aluno) {
         alunos.remove(aluno);
+        notifyDataSetChanged();
+    }
+
+    public void atualiza(List<Aluno> alunos) {
+        this.alunos.clear();
+        this.alunos.addAll(alunos);
+        notifyDataSetChanged();
     }
 }
